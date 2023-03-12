@@ -10,7 +10,8 @@ pipeline {
         stage('mvn package') {
             steps {
                 def mvnHome = tool name: 'maven', type: 'maven'
-                echo($mvnHome)
+                def mvnCMD = "${mvnHome}/bin/mvn"
+                sh "${mvnCMD} clean package"
             }
         }
     }
