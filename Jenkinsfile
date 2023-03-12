@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    options {timestamp()}
+
     stages {
         stage('PreChecks'){
             parallel {
@@ -14,7 +16,7 @@ pipeline {
                         sh 'docker --version'
                     }         
                 }
-            }
+            }       
         }          
     }
 }
