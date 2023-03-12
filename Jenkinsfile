@@ -10,7 +10,7 @@ pipeline {
         stage('mvn package') {
             steps {
                 def mvnHome = tool name: 'maven', type: 'maven'
-                echo($"mvnHome")
+                echo('$mvnHome')
             }
         }
     }
