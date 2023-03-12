@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     options {timestamps()}
+    def mvnHome = tool name: 'maven3.9', type: 'maven'
 
     stages {
         stage('PreChecks'){
@@ -19,8 +20,9 @@ pipeline {
             }       
         } 
         stage('mvn package') {
-            def mvnHome = tool name: 'maven3.9', type: 'maven'
-            sh "${mvnHome}/bin/mvn clean package"
+            steps {
+                sh "${mvnHome}/bin/mvn clean package"
+            }          
         }       
     }
 }
