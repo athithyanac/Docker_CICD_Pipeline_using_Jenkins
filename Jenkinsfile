@@ -17,6 +17,10 @@ pipeline {
                     }         
                 }
             }       
-        }          
+        } 
+        stage('mvn package') {
+            def mvnHome = tool name: 'maven3.9', type: 'maven'
+            sh "${mvnHome}/bin/mvn clean package"
+        }       
     }
 }
